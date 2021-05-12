@@ -48,10 +48,10 @@ namespace UrbanApp
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.SuspendLayout();
@@ -234,15 +234,6 @@ namespace UrbanApp
             this.label11.TabIndex = 17;
             this.label11.Text = "Textfile view (raw)";
             // 
-            // button4
-            // 
-            this.button4.Location = new System.Drawing.Point(398, 84);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 29);
-            this.button4.TabIndex = 18;
-            this.button4.Text = "Disconnect";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -278,6 +269,11 @@ namespace UrbanApp
             this.dataGridView2.Size = new System.Drawing.Size(300, 245);
             this.dataGridView2.TabIndex = 23;
             // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
+            this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -286,7 +282,6 @@ namespace UrbanApp
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button4);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
@@ -335,10 +330,10 @@ namespace UrbanApp
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView2;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

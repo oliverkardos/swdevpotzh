@@ -16,11 +16,12 @@ namespace UrbanApp
 {
     public partial class Form1 : Form
     {
-        public string dbfilepath = "default.db";
+        public string dbfilepath = null;
         bool dbfileselected = false;
       //  dbconnector sqliteconn = new dbconnector("default.db");
         SQLiteCommand dbcommand;
         bool connectionOpen = false;
+        string textfilepath = null;
 
         //private Button selectButton;
         public Form1()
@@ -78,7 +79,7 @@ namespace UrbanApp
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (dbfileselected)
+            if (dbfilepath != null)
             {
                     dbconnector sqliteconn = new dbconnector(dbfilepath);
                     sqliteconn.openConnection();
@@ -106,7 +107,28 @@ namespace UrbanApp
 
         private void button3_Click(object sender, EventArgs e)
         {
-            //StreamReader sr = new StreamReader("");
+            openFileDialog1.InitialDirectory = @"C:\";
+            openFileDialog1.Title = "Select your TEXT CSV database file";
+            openFileDialog1.DefaultExt = "db";
+            openFileDialog1.Filter = "CSV TEXT files (*.csv)|*.csv|CSV files with txt extension (*.txt)|*.txt|All files (*.*)|*.*";
+            openFileDialog1.FilterIndex = 1;
+            openFileDialog1.ShowDialog();
+            csvPathTextBox.Text = openFileDialog1.FileName;
+            textfilepath = openFileDialog1.FileName;
+            button3.Text = "[Browse for next file]";
+            StreamReader sr = new StreamReader(textfilepath, true); // auto encoding detection
+            do
+            {
+                string linebylineread = sr.ReadLine();
+                textBox2.Text += linebylineread +"  " + "\n";
+            }
+            while (sr.ReadLine() != null);
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }

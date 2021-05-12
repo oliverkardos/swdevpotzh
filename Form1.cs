@@ -50,7 +50,11 @@ namespace UrbanApp
             {
                 openFileDialog2.ReadOnlyChecked = true;
                 openFileDialog2.ShowReadOnly = true;
-                MessageBox.Show("Write-protected mode is now available. You can now select 'read-only' option when browsing for your database file. Some functionalities of the app have been restricted in order to be able to work in write-protected mode. If you want to revert from read-only mode to standard read-write mode, please restart the app.");
+                MessageBox.Show("Write-protected mode is now enabled. You can now select 'read-only' option when browsing for your database file. Whether you select that or not, the app will not write new data to the db. Some functionalities of the app have been restricted in order to be able to work in write-protected mode. If you want to revert from read-only mode to standard read-write mode, please restart the app.");
+                csvPathTextBox.Text = "Write prevention is enabled";
+                btnWriteToDB.Enabled = false;
+                btnWriteToDB.Text = "write disabled";
+
             }
             if (!checkBox1.Checked)
             {
@@ -59,6 +63,11 @@ namespace UrbanApp
                 //openFileDialog2.ShowReadOnly = false;
                 MessageBox.Show("Please restart the app to revert to read-write mode as this feature is designed not to alter filestreams that are already opened.");
             }
+        }
+
+        private void btnWriteToDB_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

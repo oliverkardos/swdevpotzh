@@ -42,8 +42,15 @@ namespace UrbanApp
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.btnWriteToDB = new System.Windows.Forms.Button();
+            this.csvPathTextBox = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.button5 = new System.Windows.Forms.Button();
+            this.button6 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // openFileDialog2
@@ -82,12 +89,13 @@ namespace UrbanApp
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.textBox1.ForeColor = System.Drawing.Color.DarkRed;
             this.textBox1.Location = new System.Drawing.Point(210, 2);
             this.textBox1.Name = "textBox1";
             this.textBox1.ReadOnly = true;
             this.textBox1.Size = new System.Drawing.Size(178, 27);
             this.textBox1.TabIndex = 3;
-            this.textBox1.Text = "Select your file ...";
+            this.textBox1.Text = "Select your database file ...";
             // 
             // checkBox1
             // 
@@ -140,7 +148,7 @@ namespace UrbanApp
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(13, 105);
+            this.label6.Location = new System.Drawing.Point(13, 134);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(112, 20);
             this.label6.TabIndex = 9;
@@ -149,7 +157,7 @@ namespace UrbanApp
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(12, 129);
+            this.label7.Location = new System.Drawing.Point(12, 158);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(577, 20);
             this.label7.TabIndex = 10;
@@ -158,36 +166,111 @@ namespace UrbanApp
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(132, 95);
+            this.button3.Location = new System.Drawing.Point(132, 124);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(163, 29);
             this.button3.TabIndex = 11;
             this.button3.Text = "Browse for text file...";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // btnWriteToDB
+            // 
+            this.btnWriteToDB.Location = new System.Drawing.Point(500, 125);
+            this.btnWriteToDB.Name = "btnWriteToDB";
+            this.btnWriteToDB.Size = new System.Drawing.Size(171, 29);
+            this.btnWriteToDB.TabIndex = 12;
+            this.btnWriteToDB.Text = "Write to database";
+            this.btnWriteToDB.UseVisualStyleBackColor = true;
+            this.btnWriteToDB.Click += new System.EventHandler(this.btnWriteToDB_Click);
+            // 
+            // csvPathTextBox
+            // 
+            this.csvPathTextBox.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.csvPathTextBox.ForeColor = System.Drawing.Color.LimeGreen;
+            this.csvPathTextBox.Location = new System.Drawing.Point(301, 124);
+            this.csvPathTextBox.Name = "csvPathTextBox";
+            this.csvPathTextBox.ReadOnly = true;
+            this.csvPathTextBox.Size = new System.Drawing.Size(193, 27);
+            this.csvPathTextBox.TabIndex = 13;
+            this.csvPathTextBox.Text = "Select your text file...";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(11, 178);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(481, 20);
+            this.label8.TabIndex = 14;
+            this.label8.Text = "You can see your database file on the left and your text file on the right.";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(12, 202);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(119, 20);
+            this.label9.TabIndex = 15;
+            this.label9.Text = "Database viewer";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(301, 202);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(172, 20);
+            this.label10.TabIndex = 16;
+            this.label10.Text = "Textfile view (processed)";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(580, 202);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(129, 20);
+            this.label11.TabIndex = 17;
+            this.label11.Text = "Textfile view (raw)";
+            // 
             // button4
             // 
-            this.button4.Location = new System.Drawing.Point(604, 149);
+            this.button4.Location = new System.Drawing.Point(398, 84);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(171, 29);
-            this.button4.TabIndex = 12;
-            this.button4.Text = "Write to database";
+            this.button4.Size = new System.Drawing.Size(94, 29);
+            this.button4.TabIndex = 18;
+            this.button4.Text = "Disconnect";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // textBox2
+            // button5
             // 
-            this.textBox2.Location = new System.Drawing.Point(497, 95);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(125, 27);
-            this.textBox2.TabIndex = 13;
+            this.button5.Location = new System.Drawing.Point(210, 84);
+            this.button5.Name = "button5";
+            this.button5.Size = new System.Drawing.Size(167, 29);
+            this.button5.TabIndex = 19;
+            this.button5.Text = "Refresh database view";
+            this.button5.UseVisualStyleBackColor = true;
+            // 
+            // button6
+            // 
+            this.button6.Location = new System.Drawing.Point(13, 84);
+            this.button6.Name = "button6";
+            this.button6.Size = new System.Drawing.Size(167, 29);
+            this.button6.TabIndex = 20;
+            this.button6.Text = "Clear textview";
+            this.button6.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(802, 474);
-            this.Controls.Add(this.textBox2);
+            this.ClientSize = new System.Drawing.Size(1077, 474);
+            this.Controls.Add(this.button6);
+            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
+            this.Controls.Add(this.label11);
+            this.Controls.Add(this.label10);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.csvPathTextBox);
+            this.Controls.Add(this.btnWriteToDB);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.label6);
@@ -201,7 +284,7 @@ namespace UrbanApp
             this.Controls.Add(this.label1);
             this.Controls.Add(this.button1);
             this.Name = "Form1";
-            this.Text = "Form1";
+            this.Text = "UrbanApp";
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -222,8 +305,15 @@ namespace UrbanApp
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnWriteToDB;
+        private System.Windows.Forms.TextBox csvPathTextBox;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button button6;
     }
 }
 

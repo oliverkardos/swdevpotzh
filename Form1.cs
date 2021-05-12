@@ -40,6 +40,7 @@ namespace UrbanApp
             button1.Enabled = false;
             button1.Text = "[File selected]";
             textBox1.Enabled = false;
+            button2.Enabled = true;
 
         }
 

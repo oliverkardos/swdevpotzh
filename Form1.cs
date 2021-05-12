@@ -18,7 +18,7 @@ namespace UrbanApp
     {
         public string dbfilepath = null;
         bool dbfileselected = false;
-      //  dbconnector sqliteconn = new dbconnector("default.db");
+        //  dbconnector sqliteconn = new dbconnector("default.db");
         SQLiteCommand dbcommand;
         bool connectionOpen = false;
         string textfilepath = null;
@@ -88,23 +88,23 @@ namespace UrbanApp
         {
             if (dbfilepath != null)
             {
-                    dbconnector sqliteconn = new dbconnector(dbfilepath);
-                    sqliteconn.openConnection();
-                    connectionOpen = true;
-                    button2.BackColor = Color.Green;
-                    dbcommand = new SQLiteCommand("SELECT * FROM urbanization", sqliteconn.GetConnection());
-                   SQLiteDataReader dbreader = dbcommand.ExecuteReader();
+                dbconnector sqliteconn = new dbconnector(dbfilepath);
+                sqliteconn.openConnection();
+                connectionOpen = true;
+                button2.BackColor = Color.Green;
+                dbcommand = new SQLiteCommand("SELECT * FROM urbanization", sqliteconn.GetConnection());
+                SQLiteDataReader dbreader = dbcommand.ExecuteReader();
 
                 DataTable dt = new DataTable();
                 dt.Load(dbreader);
-/* v1 for testing - manual fill
-                dt.Columns.Add("ID", typeof(int));
-                dt.Columns.Add("CoordX", typeof(string));
-                dt.Columns.Add("CoordY", typeof(string));
-                dt.Columns.Add("Name", typeof(string));
-                dt.Columns.Add("data1", typeof(int));
-                dt.Columns.Add("data2", typeof(int));
-*/
+                /* v1 for testing - manual fill
+                                dt.Columns.Add("ID", typeof(int));
+                                dt.Columns.Add("CoordX", typeof(string));
+                                dt.Columns.Add("CoordY", typeof(string));
+                                dt.Columns.Add("Name", typeof(string));
+                                dt.Columns.Add("data1", typeof(int));
+                                dt.Columns.Add("data2", typeof(int));
+                */
                 // v2 autofill
                 dataGridView1.DataSource = dt;
                 sqliteconn.Close();
@@ -141,11 +141,16 @@ namespace UrbanApp
             dt2.Columns.Add("data2", typeof(int));
 
             // then rows 
+            // v1
+            /*
             do
             {
                 string linebylineread = sr.ReadLine();
-                textBox2.Text += linebylineread +"  " + "\n";
-                string[] splitatcomma = linebylineread.Split(';');
+                textBox2.Text += linebylineread + "  " + "\n";
+                MessageBox.Show(linebylineread);
+                //string[] splitatcomma = linebylineread.Split(';', 6);
+                 string[] splitatcomma = linebylineread.Split(';',6);
+
                 ids.Add(Convert.ToInt16(splitatcomma[0]));
                 cordsx.Add(splitatcomma[1]);
                 cordsy.Add(splitatcomma[2]);
@@ -155,9 +160,29 @@ namespace UrbanApp
                 dt2.Rows.Add(splitatcomma);
             }
             while (sr.ReadLine() != null);
+            */
+            string linebylineread = "";
+            // v2
+            while ((linebylineread = sr.ReadLine()) != null)
+            {
+               // string linebylineread = sr.ReadLine();
+                textBox2.Text += linebylineread + "  " + "\n";
+                MessageBox.Show(linebylineread);
+                //string[] splitatcomma = linebylineread.Split(';', 6);
+                string[] splitatcomma = linebylineread.Split(';', 6);
+
+                ids.Add(Convert.ToInt16(splitatcomma[0]));
+                cordsx.Add(splitatcomma[1]);
+                cordsy.Add(splitatcomma[2]);
+                names.Add(splitatcomma[3]);
+                data1.Add(splitatcomma[4]);
+                data2.Add(splitatcomma[5]);
+                dt2.Rows.Add(splitatcomma);
+            }
+      //      while (sr.ReadLine() != null);
             sr.Close();
             sr.Dispose();
-
+            
            
 
 

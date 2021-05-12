@@ -21,6 +21,7 @@ namespace UrbanApp
         //  dbconnector sqliteconn = new dbconnector("default.db");
         SQLiteCommand dbcommand;
         bool connectionOpen = false;
+        bool writemodeflag = true;
         string textfilepath = null;
         DataTable dt2 = new DataTable(); // txt processing
         List<int> ids = new List<int>();
@@ -29,6 +30,7 @@ namespace UrbanApp
         List<string> names = new List<string>();
         List<string> data1 = new List<string>();
         List<string> data2 = new List<string>();
+        SQLiteCommand cmddbwrite;
 
         //private Button selectButton;
         public Form1()
@@ -68,6 +70,7 @@ namespace UrbanApp
                 csvPathTextBox.Text = "Write prevention is enabled";
                 btnWriteToDB.Enabled = false;
                 btnWriteToDB.Text = "write disabled";
+                writemodeflag = false;
 
             }
             if (!checkBox1.Checked)
@@ -81,7 +84,20 @@ namespace UrbanApp
 
         private void btnWriteToDB_Click(object sender, EventArgs e)
         {
+            if (writemodeflag)
+            {
+                // cmddbwrite
 
+                dbconnector sqliteconn = new dbconnector(dbfilepath);
+                sqliteconn.openConnection();
+
+                foreach (int i in ids)
+                {
+                    cmddbwrite = new SQLiteCommand("insert into urbanization(id,cordx,cordy,name,data1,data2) values('" + ids[i] + "','" + cordsx[i] + "','" + cordsy[i] + "','" + names[i] + "','" + data1[i] + "','" + data2[i] + "');", sqliteconn.GetConnection());
+                    cmddbwrite.ExecuteNonQuery(); // insert
+                }
+                MessageBox.Show("Database write success");
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -182,9 +198,8 @@ namespace UrbanApp
       //      while (sr.ReadLine() != null);
             sr.Close();
             sr.Dispose();
-            
-           
 
+            dataGridView2.DataSource = dt2;
 
 
         }
@@ -201,5 +216,10 @@ public void button4_Click(object sender, EventArgs e)
 
 
 }
-}
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+    }
 }

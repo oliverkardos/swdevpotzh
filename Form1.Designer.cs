@@ -179,7 +179,7 @@ namespace UrbanApp
             // 
             // btnWriteToDB
             // 
-            this.btnWriteToDB.Location = new System.Drawing.Point(500, 125);
+            this.btnWriteToDB.Location = new System.Drawing.Point(500, 122);
             this.btnWriteToDB.Name = "btnWriteToDB";
             this.btnWriteToDB.Size = new System.Drawing.Size(171, 29);
             this.btnWriteToDB.TabIndex = 12;

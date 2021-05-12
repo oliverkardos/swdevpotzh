@@ -22,6 +22,13 @@ namespace UrbanApp
         SQLiteCommand dbcommand;
         bool connectionOpen = false;
         string textfilepath = null;
+        DataTable dt2 = new DataTable(); // txt processing
+        List<int> ids = new List<int>();
+        List<string> cordsx = new List<string>();
+        List<string> cordsy = new List<string>();
+        List<string> names = new List<string>();
+        List<string> data1 = new List<string>();
+        List<string> data2 = new List<string>();
 
         //private Button selectButton;
         public Form1()
@@ -107,6 +114,12 @@ namespace UrbanApp
 
         private void button3_Click(object sender, EventArgs e)
         {
+            ids.Clear();
+            cordsx.Clear();
+            cordsy.Clear();
+            names.Clear();
+            data1.Clear();
+            data2.Clear();
             openFileDialog1.InitialDirectory = @"C:\";
             openFileDialog1.Title = "Select your TEXT CSV database file";
             openFileDialog1.DefaultExt = "db";
@@ -117,18 +130,51 @@ namespace UrbanApp
             textfilepath = openFileDialog1.FileName;
             button3.Text = "[Browse for next file]";
             StreamReader sr = new StreamReader(textfilepath, true); // auto encoding detection
+            dt2.Clear(); // just to be safe, in case this isnt the first file
+                         // manual fill
+                         // first the headers
+            dt2.Columns.Add("ID", typeof(int));
+            dt2.Columns.Add("CoordX", typeof(string));
+            dt2.Columns.Add("CoordY", typeof(string));
+            dt2.Columns.Add("Name", typeof(string));
+            dt2.Columns.Add("data1", typeof(int));
+            dt2.Columns.Add("data2", typeof(int));
+
+            // then rows 
             do
             {
                 string linebylineread = sr.ReadLine();
                 textBox2.Text += linebylineread +"  " + "\n";
+                string[] splitatcomma = linebylineread.Split(';');
+                ids.Add(Convert.ToInt16(splitatcomma[0]));
+                cordsx.Add(splitatcomma[1]);
+                cordsy.Add(splitatcomma[2]);
+                names.Add(splitatcomma[3]);
+                data1.Add(splitatcomma[4]);
+                data2.Add(splitatcomma[5]);
+                dt2.Rows.Add(splitatcomma);
             }
             while (sr.ReadLine() != null);
+            sr.Close();
+            sr.Dispose();
+
+           
+
+
 
         }
 
-        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
-        {
+private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+{
 
-        }
-    }
+}
+
+public void button4_Click(object sender, EventArgs e)
+{
+
+//
+
+
+}
+}
 }

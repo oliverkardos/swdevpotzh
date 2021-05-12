@@ -49,8 +49,6 @@ namespace UrbanApp
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
@@ -133,7 +131,6 @@ namespace UrbanApp
             // 
             // button2
             // 
-            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(398, 48);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(94, 29);
@@ -178,6 +175,7 @@ namespace UrbanApp
             this.button3.TabIndex = 11;
             this.button3.Text = "Browse for text file...";
             this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
             // btnWriteToDB
             // 
@@ -245,24 +243,6 @@ namespace UrbanApp
             this.button4.Text = "Disconnect";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // button5
-            // 
-            this.button5.Location = new System.Drawing.Point(210, 84);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(167, 29);
-            this.button5.TabIndex = 19;
-            this.button5.Text = "Refresh database view";
-            this.button5.UseVisualStyleBackColor = true;
-            // 
-            // button6
-            // 
-            this.button6.Location = new System.Drawing.Point(13, 84);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(167, 29);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Clear textview";
-            this.button6.UseVisualStyleBackColor = true;
-            // 
             // dataGridView1
             // 
             this.dataGridView1.AllowUserToAddRows = false;
@@ -306,8 +286,6 @@ namespace UrbanApp
             this.Controls.Add(this.dataGridView2);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.label11);
             this.Controls.Add(this.label10);
@@ -358,8 +336,6 @@ namespace UrbanApp
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button6;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.DataGridView dataGridView2;

@@ -16,13 +16,13 @@ namespace UrbanApp
 {
     public partial class Form1 : Form
     {
-        public string dbfilepath = null;
+        public string dbfilepath = "default.db";
         bool dbfileselected = false;
-        dbconnector sqliteconn = new dbconnector();
+      //  dbconnector sqliteconn = new dbconnector("default.db");
         SQLiteCommand dbcommand;
         bool connectionOpen = false;
 
-        private Button selectButton;
+        //private Button selectButton;
         public Form1()
         {
             InitializeComponent();
@@ -80,27 +80,33 @@ namespace UrbanApp
         {
             if (dbfileselected)
             {
-                if (!connectionOpen)
-                {
+                    dbconnector sqliteconn = new dbconnector(dbfilepath);
                     sqliteconn.openConnection();
                     connectionOpen = true;
                     button2.BackColor = Color.Green;
-                }
-                dbcommand = new SQLiteCommand("SELECT * FROM urbanization", sqliteconn.GetConnection());
-                SQLiteDataReader dbreader = dbcommand.ExecuteReader();
+                    dbcommand = new SQLiteCommand("SELECT * FROM urbanization", sqliteconn.GetConnection());
+                   SQLiteDataReader dbreader = dbcommand.ExecuteReader();
 
                 DataTable dt = new DataTable();
                 dt.Load(dbreader);
-
+/* v1 for testing - manual fill
                 dt.Columns.Add("ID", typeof(int));
                 dt.Columns.Add("CoordX", typeof(string));
                 dt.Columns.Add("CoordY", typeof(string));
                 dt.Columns.Add("Name", typeof(string));
                 dt.Columns.Add("data1", typeof(int));
                 dt.Columns.Add("data2", typeof(int));
-
+*/
+                // v2 autofill
+                dataGridView1.DataSource = dt;
+                sqliteconn.Close();
             }
             else MessageBox.Show("Error: no database file is selected, nothing to connect to");
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            //StreamReader sr = new StreamReader("");
         }
     }
 }
